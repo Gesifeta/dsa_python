@@ -9,6 +9,7 @@ class LinkedList:
         self.head = new_node
         self.tail = new_node
         self.length = 1
+
     def append(self,value):
         new_node = Node(value)
         if self.length == 0:
@@ -19,6 +20,7 @@ class LinkedList:
             self.tail.next =new_node
             self.tail =new_node
             self.length += 1
+
     def pop(self):
         if self.head is None:
             return None
@@ -35,16 +37,48 @@ class LinkedList:
         self.tail=prev
         self.tail.next =None
         self.length -= 1
-            
+    def prpend(self,value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head= new_node
+            self.tail =new_node
+        else:
+            temp = self.head
+            self.head = new_node
+            new_node.next= temp
 
-            
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        self.head = self.head.next
+        self.length -= 1
+
+    def show_all(self):
+        temp =self.head
+        while temp is not None:
+            print(temp.value)
+            temp=temp.next
+        
+
 my_linked_list = LinkedList(300)
 print("Length ",my_linked_list.head.value)
 my_linked_list.append(202)
 my_linked_list.append(245)
 my_linked_list.append(22)
 my_linked_list.append(45)
-my_linked_list.pop()
+print("*"*100)
+my_linked_list.show_all()
+print("*"*100)
+my_linked_list.show_all()
+print("*"*100)
+my_linked_list.pop_first()
+print("*"*100)
+my_linked_list.show_all()
+print("*"*100)
+my_linked_list.prpend(231)
+my_linked_list.prpend(1)
+print("Prepended === >")
+my_linked_list.show_all()
 print("Length ",my_linked_list.length)
 
         
