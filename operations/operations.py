@@ -113,8 +113,19 @@ class LinkedList:
                 temp = temp.next
             prev.next = temp.next
             self.length -= 1
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
 
-
+        next = temp.next
+        prev = None
+        for _ in range(self.length):
+           next = temp.next
+           temp.next = prev
+           prev= temp
+           temp = next
+           
     def show_all(self):
         temp = self.head
         while temp is not None:
@@ -122,37 +133,18 @@ class LinkedList:
             temp=temp.next
         
 
-my_linked_list = LinkedList(300)
-print("Length ",my_linked_list.head.value)
-my_linked_list.append(202)
-my_linked_list.append(245)
-my_linked_list.append(22)
-my_linked_list.append(45)
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+my_linked_list.append(5)
+my_linked_list.insert(4,1)
 print("*"*100)
-my_linked_list.show_all()
-print("*"*100)
-my_linked_list.show_all()
-print("*"*100)
-my_linked_list.pop_first()
-print("*"*100)
-my_linked_list.show_all()
-print("*"*100)
-my_linked_list.prpend(231)
-my_linked_list.prpend(1)
-print("Prepended === >")
-my_linked_list.show_all()
-my_linked_list.get(-7)
-my_linked_list.set_value(3,125)
-print("Set === >")
-my_linked_list.show_all()
 print("List === >")
-my_linked_list.insert(3,236)
-my_linked_list.insert(2,235)
 my_linked_list.show_all()
-print("Removed === >")
-my_linked_list.remove(6)
+my_linked_list.reverse()
+print("Reversed === >")
 my_linked_list.show_all()
 
-print("Length ",my_linked_list.length)
 
         
