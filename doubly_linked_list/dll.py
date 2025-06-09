@@ -58,7 +58,53 @@ class DoublyLinkedList:
             self.head.prev = None
             temp.next = None
             self.length -= 1
-        
+    def get(self,value):
+
+        if self.head is None:
+            return None
+        else:
+            temp = self.head
+            while temp.next and temp.value != value :
+                temp = temp.next
+            if temp.value == value:
+                return True
+            else:
+                return None
+    def get_by_index(self,index):
+        if index <1 or index > self.length:
+            return None
+        else:
+            temp = self.head
+            if index <= self.length/2:
+                for _ in range(1, index):
+                    temp = temp.next
+                return temp.value
+            else:
+                temp = self.tail
+                for _ in range(int(self.length),index,-1):
+                    temp = temp.prev
+                return temp.value
+    def set_value(self, index, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail =  new_node
+        else:
+            if index <= 0 or index>self.length:
+                return None
+            if index <= self.length/2:
+                temp = self.head
+                for _ in range(1, index):
+                    temp = temp.next
+                temp.value = value
+            else:
+                temp = self.tail
+                for _ in range(self.length, index, -1):
+                    temp = temp.prev
+                temp.value = value
+                return True
+
+
     def showList(self):
         temp = self.head
         while temp is not None:
@@ -67,14 +113,18 @@ class DoublyLinkedList:
 doubly_linked_list = DoublyLinkedList(2)
 doubly_linked_list.append(26)
 doubly_linked_list.append(6)
-print(doubly_linked_list.showList())
+# print(doubly_linked_list.showList())
 doubly_linked_list.pop()
-print(doubly_linked_list.showList())
+# print(doubly_linked_list.showList())
 doubly_linked_list.prepend(23)
 doubly_linked_list.prepend(22)
 doubly_linked_list.prepend(4)
 doubly_linked_list.prepend(25)
-print(doubly_linked_list.showList())
+# print(doubly_linked_list.showList())
 doubly_linked_list.pop_first()
 doubly_linked_list.pop_first()
+# print(doubly_linked_list.showList())
+# print("Search result",doubly_linked_list.get_by_index(3))
+doubly_linked_list.set_value(3,46)
 print(doubly_linked_list.showList())
+
