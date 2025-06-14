@@ -103,13 +103,26 @@ class DoublyLinkedList:
                     temp = temp.prev
                 temp.value = value
                 return True
-
-
+    def insert(self, index, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            temp = self.head
+            prev = None
+            for _ in range(index):
+                temp = temp.next
+            temp.prev = new_node
+            new_node.next = self.head
+            new_node.prev = temp.prev
+                
     def showList(self):
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
+
 doubly_linked_list = DoublyLinkedList(2)
 doubly_linked_list.append(26)
 doubly_linked_list.append(6)
@@ -125,6 +138,7 @@ doubly_linked_list.pop_first()
 doubly_linked_list.pop_first()
 # print(doubly_linked_list.showList())
 # print("Search result",doubly_linked_list.get_by_index(3))
-doubly_linked_list.set_value(3,46)
+doubly_linked_list.set_value(1,46)
+doubly_linked_list.insert(3,60)
 print(doubly_linked_list.showList())
 
