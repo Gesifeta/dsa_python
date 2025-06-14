@@ -28,6 +28,7 @@ class Stack:
             temp = self.top
             self.top = self.top.next
             temp.next = None
+            self.height -= 1
 
     def show_stack_list(self):
         temp = self.top

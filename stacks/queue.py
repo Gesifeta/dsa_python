@@ -29,6 +29,21 @@ class Queue:
         else:
             self.last.next = new_node
             self.last = new_node
+            self.length += 1
+    def dequeue(self):
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            self.first = None
+            self.last = None
+        else:
+            temp = self.first
+            self.first = self.first.next
+            temp = None
+            self.length -= 1
+            print(temp)
+
+
 
 
 
@@ -39,4 +54,9 @@ queue.enqueue("Hagos")
 print(f"First = {queue.first.value}")
 print(f"Last = {queue.last.value}")
 print(queue.show_queue_list())
+queue.dequeue()
+print(f"First = {queue.first.value}")
+print(f"Last = {queue.last.value}")
+print(queue.show_queue_list())
+
 
